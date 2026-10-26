@@ -1,19 +1,50 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="="UTF-8">
-        <title>B&B</title>
-        <link rel="stylesheet" href="style.css"> 
-    </head>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <title>B&B</title>
+    <link rel="stylesheet" href="style.css"> 
+    <link href="https://googleapis.com" rel="stylesheet">
+</head>
+<body>
 
-    <body>
-        <div id="top-bar">
-            <h3>VILLA ANTICA B&B</h3>
-            <button>HOME</button>
-            <button>LE STANZE</button>
-            <button>IL GIARDINO</button>
-            <button id="prenota">PRENOTA ORA</button>
+    <!-- BARRA DI NAVIGAZIONE FISSA -->
+    <div id="top-bar">
+        <h3>VILLA ANTICA B&B</h3>
+        <div class="nav-buttons">
+            <button class="button-top-bar">HOME</button>
+            <button class="button-top-bar">LE STANZE</button>
+            <button class="button-top-bar">IL GIARDINO</button>
+            <button class="button-top-bar">RECENSIONI</button>
+            <button class="button-top-bar">FAQ</button>
+            <button class="button-top-bar">CONTATTI</button>
+            <button id="prenota-top-bar" class="button-top-bar">PRENOTA ORA</button>
         </div>
-    </body>
+    </div>
 
+    <!-- IMMAGINE DI COPERTINA (ALTEZZA COPRE LO SCHERMO) -->
+    <img src="Images/HomeImg.jpeg" alt="HomeImg.jpeg" id="home-image">
+
+    <!-- SEZIONE STORIA (DIVISA IN DUE COLONNE) -->
+    <div class="story-section">
+        <div class="story-col-left">
+            <img src="Images/img1.jpeg" alt="">
+            <img src="Images/img2.jpeg" alt="">
+        </div>
+        <div class="story-col-right">
+            <h3 class="story-title">LA NOSTRA STORIA SECOLARE</h3>
+            <p class="story-text">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam fugiat quae est 
+                laboriosam aperiam eaque, voluptas quos! Rerum, aut iste at quae repudiandae 
+                numquam fugit distinctio quas et, tempore omnis?
+            </p>
+            <div id="scopri-div">
+                <a href="" style="font-weight: bolder; color: brown;">SCOPRI DI PIU'</a>
+                <p style="font-weight: bold; color: brown; margin-left: 10px;">></p>
+            </div>
+            
+        </div>
+    </div>
+
+</body>
 </html>
