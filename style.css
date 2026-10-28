@@ -1,4 +1,6 @@
-*, *::before, *::after {
+/*transition: [transition-property] [transition-duration] [transition-timing-function] [transition-delay]; */
+
+*{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
