@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Le Stanze · Villa Antica B&amp;B</title>
+    <meta name="description" content="Le stanze di Villa Antica B&B: suite affrescate, camere con mobili d'epoca e planimetria interattiva della dimora.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Special+Elite&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="stanze-style.css">
+</head>
+<body>
+    <div id="scroll-progress"></div>
+
+    <!-- BARRA DI NAVIGAZIONE -->
+    <header id="top-bar">
+        <h3 class="logo" data-href="index.html">Villa Antica <span>B&amp;B</span></h3>
+
+        <button class="burger" id="burger" aria-label="Apri il menu" aria-expanded="false">
+            <span></span><span></span><span></span>
+        </button>
+
+        <nav class="nav-buttons" id="nav-buttons">
+            <button class="button-top-bar" data-href="index.html">HOME</button>
+            <button class="button-top-bar active" data-href="stanze.html">LE STANZE</button>
+            <button class="button-top-bar" data-href="giardino.html">IL GIARDINO</button>
+            <button class="button-top-bar" data-href="recensioni.html">RECENSIONI</button>
+            <button class="button-top-bar" data-href="faq.html">FAQ</button>
+            <button class="button-top-bar" data-href="contatti.html">CONTATTI</button>
+            <button id="prenota-top-bar" class="button-top-bar">PRENOTA ORA</button>
+        </nav>
+    </header>
+
+    <main>
+        <!-- HERO STANZE -->
+        <section class="rooms-hero">
+            <div class="hero-vignette"></div>
+            <div class="rooms-hero-content">
+                <p class="eyebrow light">Ospitalità d'altri tempi</p>
+                <h1>Le Nostre Stanze</h1>
+                <div class="ornament light"><span>❦</span></div>
+                <p class="hero-sub">Ambienti unici arredati con mobili d'epoca, pavimenti in cotto o cementine storiche e affacci sul parco secolare.</p>
+            </div>
+        </section>
+
+        <!-- PLANIMETRIA EDIFICIO -->
+        <section id="planimetria" class="section plan-section">
+            <div class="section-head reveal">
+                <p class="eyebrow">Mappa della dimora</p>
+                <h2>Planimetria dell'Edificio</h2>
+                <div class="ornament"><span>❦</span></div>
+                <p>Esplora la disposizione interna di Villa Antica. Clicca su una stanza nella pianta per visualizzarne i dettagli e l'ubicazione esatta nei vari piani.</p>
+            </div>
+
+            <div class="plan-wrapper reveal">
+                <div class="plan-controls">
+                    <button class="plan-tab active" data-floor="piano1">Primo Piano (Nobile)</button>
+                    <button class="plan-tab" data-floor="piano2">Secondo Piano (Mansardato)</button>
+                </div>
+
+                <div class="plan-display">
+                    <!-- SVG PLANIMETRIA INTERATTIVA -->
+                    <div class="svg-container">
+                        <svg viewBox="0 0 800 500" id="house-map" role="group" aria-label="Planimetria interattiva della villa">
+                            <!-- SFONDO MURA ESTERNE -->
+                            <rect x="40" y="40" width="720" height="420" rx="6" class="wall-outer" />
+                            <rect x="50" y="50" width="700" height="400" rx="4" class="wall-inner" />
+
+                            <!-- PIANO 1 -->
+                            <g id="group-piano1" class="floor-group active-floor">
+                                <!-- CORRIDOIO / ATRIO CENTRAL -->
+                                <rect x="330" y="50" width="140" height="400" class="room-corridor" />
+                                <text x="400" y="240" class="room-label-sub">Atrio &amp; Scalone Nobile</text>
+
+                                <!-- STANZA 1: SUITE DEI POETI -->
+                                <g class="room-interactive" data-room="poeti">
+                                    <rect x="50" y="50" width="280" height="200" class="room-shape" />
+                                    <text x="190" y="140" class="room-label">Suite dei Poeti</text>
+                                    <text x="190" y="165" class="room-subtext">Camera 101 · 45 m²</text>
+                                    <circle cx="90" cy="90" r="12" class="room-badge" />
+                                    <text x="90" y="94" class="room-badge-text">101</text>
+                                </g>
+
+                                <!-- STANZA 2: CAMERA DEL CORTE -->
+                                <g class="room-interactive" data-room="conte">
+                                    <rect x="470" y="50" width="280" height="200" class="room-shape" />
+                                    <text x="610" y="140" class="room-label">Stanza del Conte</text>
+                                    <text x="610" y="165" class="room-subtext">Camera 102 · 38 m²</text>
+                                    <circle cx="510" cy="90" r="12" class="room-badge" />
+                                    <text x="510" y="94" class="room-badge-text">102</text>
+                                </g>
+
+                                <!-- AREA SALONE COMUNE -->
+                                <rect x="50" y="250" width="280" height="200" class="room-common" />
+                                <text x="190" y="345" class="room-label-sub">Salone da Tè &amp; Biblioteca</text>
+
+                                <!-- AREA GIARDINO D'INVERNO -->
+                                <rect x="470" y="250" width="280" height="200" class="room-common" />
+                                <text x="610" y="345" class="room-label-sub">Veranda &amp; Giardino d'Inverno</text>
+                            </g>
+
+                            <!-- PIANO 2 -->
+                            <g id="group-piano2" class="floor-group hidden-floor">
+                                <!-- CORRIDOIO CENTRAL -->
+                                <rect x="330" y="50" width="140" height="400" class="room-corridor" />
+                                <text x="400" y="240" class="room-label-sub">Galleria Mansardata</text>
+
+                                <!-- STANZA 3: MANSARDA GELSO -->
+                                <g class="room-interactive" data-room="gelso">
+                                    <rect x="50" y="50" width="280" height="360" class="room-shape" />
+                                    <text x="190" y="220" class="room-label">Mansarda Gelso</text>
+                                    <text x="190" y="245" class="room-subtext">Camera 201 · 32 m²</text>
+                                    <circle cx="90" cy="90" r="12" class="room-badge" />
+                                    <text x="90" y="94" class="room-badge-text">201</text>
+                                </g>
+
+                                <!-- STANZA 4: SUITE LIMONAIA -->
+                                <g class="room-interactive" data-room="limonaia">
+                                    <rect x="470" y="50" width="280" height="360" class="room-shape" />
+                                    <text x="610" y="220" class="room-label">Suite Limonaia</text>
+                                    <text x="610" y="245" class="room-subtext">Camera 202 · 40 m²</text>
+                                    <circle cx="510" cy="90" r="12" class="room-badge" />
+                                    <text x="510" y="94" class="room-badge-text">202</text>
+                                </g>
+                            </g>
+                        </svg>
+                    </div>
+
+                    <!-- CARD DETTAGLIO SELEZIONE STANZA -->
+                    <div class="plan-info-card" id="plan-info">
+                        <span class="eyebrow" id="info-floor-tag">Primo Piano · Nobile</span>
+                        <h3 id="info-title">Seleziona una stanza</h3>
+                        <p class="info-desc" id="info-desc">Clicca o passa sopra le aree colorate della planimetria per vederne l'ubicazione, le caratteristiche principali e accedere all'offerta riservata.</p>
+
+                        <div class="info-details" id="info-details" style="display: none;">
+                            <div class="info-grid">
+                                <div><strong>Superficie:</strong> <span id="info-size">-</span></div>
+                                <div><strong>Ospiti:</strong> <span id="info-guests">-</span></div>
+                                <div><strong>Vista:</strong> <span id="info-view">-</span></div>
+                                <div><strong>Prezzo:</strong> <span id="info-price">-</span></div>
+                            </div>
+                            <button class="btn btn-primary btn-sm" id="info-book-btn" data-open-booking>Prenota questa stanza</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- TABELLA DISPONIBILITÀ E CONFRONTO -->
+        <section id="tabella-stanze" class="section">
+            <div class="section-head reveal">
+                <p class="eyebrow">Caratteristiche e tariffe</p>
+                <h2>Tabella Stanze Disponibili</h2>
+                <div class="ornament"><span>❦</span></div>
+                <p>Confronta gli spazi, i servizi inclusi e scegli la sistemazione ideale per la tua permanenza nella villa.</p>
+            </div>
+
+            <div class="table-container reveal">
+                <table class="rooms-table">
+                    <thead>
+                        <tr>
+                            <th>Stanza</th>
+                            <th>Piano</th>
+                            <th>Capienza</th>
+                            <th>Dimensione</th>
+                            <th>Vista</th>
+                            <th>Servizi Inclusi</th>
+                            <th>Prezzo / Notte</th>
+                            <th>Azione</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr data-room-id="poeti">
+                            <td class="room-cell">
+                                <strong>Suite dei Poeti</strong>
+                                <small>Cam. 101 · Affreschi &amp; Camino</small>
+                            </td>
+                            <td>Primo Piano</td>
+                            <td>Fino a 2 Ospiti</td>
+                            <td>45 m²</td>
+                            <td>Parco Secolare</td>
+                            <td>
+                                <ul class="amenities-list">
+                                    <li>Camino d'epoca</li>
+                                    <li>Bagno con vasca in ghisa</li>
+                                    <li>Colazione in camera</li>
+                                    <li>Wi-Fi High-Speed</li>
+                                </ul>
+                            </td>
+                            <td class="price-cell">180 €</td>
+                            <td>
+                                <button class="btn-table" data-room-select="Suite dei Poeti">Scegli</button>
+                            </td>
+                        </tr>
+                        <tr data-room-id="conte">
+                            <td class="room-cell">
+                                <strong>Stanza del Conte</strong>
+                                <small>Cam. 102 · Letto a Baldacchino</small>
+                            </td>
+                            <td>Primo Piano</td>
+                            <td>Fino a 3 Ospiti</td>
+                            <td>38 m²</td>
+                            <td>Corte Interna</td>
+                            <td>
+                                <ul class="amenities-list">
+                                    <li>Letto a baldacchino del '800</li>
+                                    <li>Pavimento in cementine</li>
+                                    <li>Set da tè artigianale</li>
+                                    <li>Aria condizionata</li>
+                                </ul>
+                            </td>
+                            <td class="price-cell">155 €</td>
+                            <td>
+                                <button class="btn-table" data-room-select="Stanza del Conte">Scegli</button>
+                            </td>
+                        </tr>
+                        <tr data-room-id="gelso">
+                            <td class="room-cell">
+                                <strong>Mansarda Gelso</strong>
+                                <small>Cam. 201 · Travi a Vista</small>
+                            </td>
+                            <td>Secondo Piano</td>
+                            <td>Fino a 2 Ospiti</td>
+                            <td>32 m²</td>
+                            <td>Colline e Vigneti</td>
+                            <td>
+                                <ul class="amenities-list">
+                                    <li>Soffitto con travi in legno</li>
+                                    <li>Angolo lettura panoramico</li>
+                                    <li>Doccia cromoterapia</li>
+                                    <li>Frigobar biologico</li>
+                                </ul>
+                            </td>
+                            <td class="price-cell">135 €</td>
+                            <td>
+                                <button class="btn-table" data-room-select="Mansarda Gelso">Scegli</button>
+                            </td>
+                        </tr>
+                        <tr data-room-id="limonaia">
+                            <td class="room-cell">
+                                <strong>Suite Limonaia</strong>
+                                <small>Cam. 202 · Terrazzino Privato</small>
+                            </td>
+                            <td>Secondo Piano</td>
+                            <td>Fino a 4 Ospiti</td>
+                            <td>40 m²</td>
+                            <td>Giardino degli Agrumi</td>
+                            <td>
+                                <ul class="amenities-list">
+                                    <li>Terrazzo riservato</li>
+                                    <li>Doppio ambiente</li>
+                                    <li>Macchina da caffè espresso</li>
+                                    <li>Lenzuola in lino puro</li>
+                                </ul>
+                            </td>
+                            <td class="price-cell">195 €</td>
+                            <td>
+                                <button class="btn-table" data-room-select="Suite Limonaia">Scegli</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- INVITO PRENOTAZIONE -->
+        <section class="invite reveal">
+            <div class="ornament light"><span>❦</span></div>
+            <p class="invite-quote">"Chiedete disponibilità per la vostra camera preferita."</p>
+            <button class="btn btn-primary" data-open-booking>Verifica Date</button>
+        </section>
+    </main>
+
+    <footer>
+        <p class="footer-logo">Villa Antica B&amp;B</p>
+        <p>© <span id="year"></span> · Tutti i diritti riservati · Dal 1887</p>
+    </footer>
+
+    <!-- MODALE PRENOTAZIONE -->
+    <div class="modal" id="booking-modal" aria-hidden="true">
+        <div class="modal-box" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+            <button class="modal-close" id="modal-close" aria-label="Chiudi">×</button>
+            <p class="eyebrow">Prenotazione</p>
+            <h2 id="modal-title">Il vostro soggiorno</h2>
+            <div class="ornament"><span>❦</span></div>
+            <form id="booking-form" novalidate>
+                <label>Stanza Desiderata
+                    <select id="room-choice">
+                        <option value="Suite dei Poeti">Suite dei Poeti (Cam. 101)</option>
+                        <option value="Stanza del Conte">Stanza del Conte (Cam. 102)</option>
+                        <option value="Mansarda Gelso">Mansarda Gelso (Cam. 201)</option>
+                        <option value="Suite Limonaia">Suite Limonaia (Cam. 202)</option>
+                    </select>
+                </label>
+                <div class="form-row">
+                    <label>Arrivo<input type="date" id="checkin" required></label>
+                    <label>Partenza<input type="date" id="checkout" required></label>
+                </div>
+                <label>Ospiti
+                    <select id="guests">
+                        <option>1</option><option selected>2</option><option>3</option><option>4</option>
+                    </select>
+                </label>
+                <label>Email<input type="email" id="email" placeholder="nome@esempio.it" required></label>
+                <p class="form-msg" id="form-msg" role="alert"></p>
+                <button type="submit" class="btn btn-primary">Invia richiesta</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script src="stanze-script.js"></script>
+</body>
+</html>

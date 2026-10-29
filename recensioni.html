@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recensioni · Villa Antica B&amp;B</title>
+    <meta name="description" content="Le recensioni degli ospiti di Villa Antica B&B: voti, esperienze e il modulo per raccontare il tuo soggiorno.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Special+Elite&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="recensioni-style.css">
+</head>
+<body>
+    <div id="scroll-progress"></div>
+
+    <!-- BARRA DI NAVIGAZIONE -->
+    <header id="top-bar">
+        <h3 class="logo" data-href="index.html">Villa Antica <span>B&amp;B</span></h3>
+
+        <button class="burger" id="burger" aria-label="Apri il menu" aria-expanded="false">
+            <span></span><span></span><span></span>
+        </button>
+
+        <nav class="nav-buttons" id="nav-buttons">
+            <button class="button-top-bar" data-href="index.html">HOME</button>
+            <button class="button-top-bar" data-href="stanze.html">LE STANZE</button>
+            <button class="button-top-bar" data-href="giardino.html">IL GIARDINO</button>
+            <button class="button-top-bar active" data-href="recensioni.html">RECENSIONI</button>
+            <button class="button-top-bar" data-href="faq.html">FAQ</button>
+            <button class="button-top-bar" data-href="contatti.html">CONTATTI</button>
+            <button id="prenota-top-bar" class="button-top-bar">PRENOTA ORA</button>
+        </nav>
+    </header>
+
+    <main>
+        <!-- HERO RECENSIONI -->
+        <section class="rec-hero">
+            <div class="hero-vignette"></div>
+            <div class="rec-hero-content">
+                <p class="eyebrow light">Parlano di noi</p>
+                <h1>Le Voci degli Ospiti</h1>
+                <div class="ornament light"><span>❦</span></div>
+                <p class="hero-sub">Storie di colazioni lente, giardini al tramonto e stanze che sanno di casa. Le parole di chi ha dormito tra queste mura.</p>
+            </div>
+        </section>
+
+        <!-- RIEPILOGO VOTI -->
+        <section class="section rec-summary-section">
+            <div class="rec-summary reveal">
+                <div class="rec-score">
+                    <span class="rec-score-value" id="rec-average">4,9</span>
+                    <span class="rec-stars rec-score-stars" id="rec-stars-summary" aria-hidden="true">★★★★★</span>
+                    <p class="rec-score-text">su <strong id="rec-total">5</strong> recensioni<br>raccolte dalla struttura</p>
+                </div>
+
+                <div class="rec-breakdown" id="rec-breakdown" aria-label="Distribuzione dei voti">
+                    <!-- righe generate dinamicamente da recensioni.js -->
+                </div>
+            </div>
+        </section>
+
+        <!-- CAROSELLO RECENSIONI IN EVIDENZA -->
+        <section class="section rec-carousel-section">
+            <div class="section-head reveal">
+                <p class="eyebrow">In evidenza</p>
+                <h2>Soggiorni ed emozioni</h2>
+                <div class="ornament"><span>❦</span></div>
+            </div>
+
+            <div class="rec-carousel reveal" id="rec-carousel" aria-roledescription="carosello" aria-label="Recensioni in evidenza">
+                <div class="rec-slides">
+                    <blockquote class="rec-slide active">
+                        <div class="rec-stars" aria-label="5 stelle su 5">★★★★★</div>
+                        <p>"Sembra di entrare in un romanzo dell'Ottocento. Colazione indimenticabile, accoglienza calorosa e una suite che profuma di storia."</p>
+                        <cite>Giulia · Milano</cite>
+                        <span class="rec-slide-meta">Suite dei Poeti · aprile 2026</span>
+                    </blockquote>
+
+                    <blockquote class="rec-slide">
+                        <div class="rec-stars" aria-label="5 stelle su 5">★★★★★</div>
+                        <p>"Il giardino al tramonto vale da solo il viaggio. Torneremo in primavera, magari proprio nella Limonaia."</p>
+                        <cite>Thomas · Monaco di Baviera</cite>
+                        <span class="rec-slide-meta">Suite Limonaia · maggio 2026</span>
+                    </blockquote>
+
+                    <blockquote class="rec-slide">
+                        <div class="rec-stars" aria-label="5 stelle su 5">★★★★★</div>
+                        <p>"Ogni dettaglio è curato con amore. Il letto a baldacchino è un sogno ad occhi aperti e la colazione in veranda è un rito."</p>
+                        <cite>Élodie · Lione</cite>
+                        <span class="rec-slide-meta">Stanza del Conte · marzo 2026</span>
+                    </blockquote>
+                </div>
+
+                <div class="rec-controls">
+                    <button type="button" class="rec-arrow" id="rec-prev" aria-label="Recensione precedente">‹</button>
+                    <div class="rec-dots" id="rec-dots"></div>
+                    <button type="button" class="rec-arrow" id="rec-next" aria-label="Recensione successiva">›</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- FORM RECENSIONE -->
+        <section id="scrivi" class="section rec-form-section">
+            <div class="section-head reveal">
+                <p class="eyebrow">La tua storia</p>
+                <h2>Raccontaci il tuo soggiorno</h2>
+                <div class="ornament"><span>❦</span></div>
+                <p>Hai dormito a Villa Antica? Lascia una recensione: aiuti gli altri ospiti a scegliere e noi a migliorare.</p>
+            </div>
+
+            <form id="review-form" class="rec-form reveal" novalidate>
+                <div class="rec-form-row">
+                    <label class="rec-field">
+                        <span>Nome e cognome *</span>
+                        <input type="text" id="rec-name" name="name" autocomplete="name" placeholder="Giulia Rossi" aria-describedby="rec-name-error">
+                        <small class="rec-error" id="rec-name-error"></small>
+                    </label>
+
+                    <label class="rec-field">
+                        <span>Città</span>
+                        <input type="text" id="rec-city" name="city" autocomplete="address-level2" placeholder="Milano">
+                        <small class="rec-error" id="rec-city-error"></small>
+                    </label>
+                </div>
+
+                <div class="rec-form-row">
+                    <label class="rec-field">
+                        <span>Camera soggiornata *</span>
+                        <select id="rec-room" name="room" aria-describedby="rec-room-error">
+                            <option value="">Seleziona la camera…</option>
+                            <option value="Suite dei Poeti (Cam. 101)">Suite dei Poeti (Cam. 101)</option>
+                            <option value="Stanza del Conte (Cam. 102)">Stanza del Conte (Cam. 102)</option>
+                            <option value="Mansarda Gelso (Cam. 201)">Mansarda Gelso (Cam. 201)</option>
+                            <option value="Suite Limonaia (Cam. 202)">Suite Limonaia (Cam. 202)</option>
+                        </select>
+                        <small class="rec-error" id="rec-room-error"></small>
+                    </label>
+
+                    <label class="rec-field">
+                        <span>Periodo del soggiorno *</span>
+                        <input type="month" id="rec-period" name="period" min="1980-01" aria-describedby="rec-period-error">
+                        <small class="rec-error" id="rec-period-error"></small>
+                    </label>
+                </div>
+
+                <fieldset class="rec-rating" aria-describedby="rec-rating-error">
+                    <legend>Il tuo voto *</legend>
+                    <div class="rec-stars-input" id="rec-stars-input" role="radiogroup" aria-label="Voto da 1 a 5 stelle">
+                        <button type="button" class="rec-star" data-value="1" role="radio" aria-checked="false" aria-label="1 stella" tabindex="0">★</button>
+                        <button type="button" class="rec-star" data-value="2" role="radio" aria-checked="false" aria-label="2 stelle" tabindex="-1">★</button>
+                        <button type="button" class="rec-star" data-value="3" role="radio" aria-checked="false" aria-label="3 stelle" tabindex="-1">★</button>
+                        <button type="button" class="rec-star" data-value="4" role="radio" aria-checked="false" aria-label="4 stelle" tabindex="-1">★</button>
+                        <button type="button" class="rec-star" data-value="5" role="radio" aria-checked="false" aria-label="5 stelle" tabindex="-1">★</button>
+                    </div>
+                    <small class="rec-error" id="rec-rating-error"></small>
+                </fieldset>
+
+                <label class="rec-field">
+                    <span>Titolo della recensione *</span>
+                    <input type="text" id="rec-title" name="title" maxlength="70" placeholder="Un soggiorno da ricordare" aria-describedby="rec-title-error">
+                    <small class="rec-error" id="rec-title-error"></small>
+                </label>
+
+                <label class="rec-field">
+                    <span>La tua esperienza *</span>
+                    <textarea id="rec-text" name="message" rows="6" maxlength="500" placeholder="Cosa ti è piaciuto di più? Come sono stati l'accoglienza, la colazione, la camera?" aria-describedby="rec-text-error rec-text-count"></textarea>
+                    <small class="rec-error" id="rec-text-error"></small>
+                    <small class="rec-count" id="rec-text-count">0 / 500 caratteri</small>
+                </label>
+
+                <div class="rec-hp" aria-hidden="true">
+                    <label>Non compilare questo campo
+                        <input type="text" id="rec-hp" name="website" tabindex="-1" autocomplete="off">
+                    </label>
+                </div>
+
+                <div class="rec-privacy">
+                    <label class="rec-check">
+                        <input type="checkbox" id="rec-privacy" name="privacy" aria-describedby="rec-privacy-error">
+                        <span>Acconsento al trattamento dei miei dati per la pubblicazione della recensione. *</span>
+                    </label>
+                    <small class="rec-error" id="rec-privacy-error"></small>
+                </div>
+
+                <p class="rec-form-msg" id="rec-form-msg" role="alert"></p>
+
+                <button type="submit" class="btn btn-primary">Pubblica la recensione</button>
+            </form>
+        </section>
+
+        <!-- ELENCO RECENSIONI -->
+        <section id="tutte" class="section rec-list-section">
+            <div class="section-head reveal">
+                <p class="eyebrow">Tutte le esperienze</p>
+                <h2>Le recensioni</h2>
+                <div class="ornament"><span>❦</span></div>
+                <p id="rec-count" aria-live="polite">5 recensioni</p>
+            </div>
+
+            <div class="rec-filters reveal" role="group" aria-label="Filtra per voto">
+                <button type="button" class="rec-filter" data-stars="0" aria-pressed="true">Tutte</button>
+                <button type="button" class="rec-filter" data-stars="5" aria-pressed="false">5 ★</button>
+                <button type="button" class="rec-filter" data-stars="4" aria-pressed="false">4 ★</button>
+                <button type="button" class="rec-filter" data-stars="3" aria-pressed="false">3 ★</button>
+                <button type="button" class="rec-filter" data-stars="2" aria-pressed="false">2 ★</button>
+                <button type="button" class="rec-filter" data-stars="1" aria-pressed="false">1 ★</button>
+
+                <label class="rec-sort">
+                    <span>Ordina</span>
+                    <select id="rec-sort">
+                        <option value="recent">Più recenti</option>
+                        <option value="high">Voto più alto</option>
+                        <option value="low">Voto più basso</option>
+                    </select>
+                </label>
+            </div>
+
+            <div class="rec-grid" id="rec-grid" aria-live="polite">
+                <!-- card generate dinamicamente da recensioni.js -->
+            </div>
+
+            <p class="rec-empty" id="rec-empty" hidden>Nessuna recensione con questo voto. Prova a selezionare "Tutte".</p>
+
+            <noscript>
+                <p class="rec-empty">Per leggere e scrivere le recensioni è necessario attivare JavaScript nel browser.</p>
+            </noscript>
+        </section>
+
+        <!-- INVITO PRENOTAZIONE -->
+        <section class="invite reveal">
+            <div class="ornament light"><span>❦</span></div>
+            <p class="invite-quote">"Il lusso più raro è il tempo."</p>
+            <button class="btn btn-primary" data-open-booking>Richiedi disponibilità</button>
+        </section>
+    </main>
+
+    <footer>
+        <p class="footer-logo">Villa Antica B&amp;B</p>
+        <p>© <span id="year"></span> · Tutti i diritti riservati · Dal 1887</p>
+    </footer>
+
+    <!-- MODALE PRENOTAZIONE -->
+    <div class="modal" id="booking-modal" aria-hidden="true">
+        <div class="modal-box" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+            <button class="modal-close" id="modal-close" aria-label="Chiudi">×</button>
+            <p class="eyebrow">Prenotazione</p>
+            <h2 id="modal-title">Il vostro soggiorno</h2>
+            <div class="ornament"><span>❦</span></div>
+            <form id="booking-form" novalidate>
+                <label>Stanza Desiderata
+                    <select id="room-choice">
+                        <option value="Suite dei Poeti">Suite dei Poeti (Cam. 101)</option>
+                        <option value="Stanza del Conte">Stanza del Conte (Cam. 102)</option>
+                        <option value="Mansarda Gelso">Mansarda Gelso (Cam. 201)</option>
+                        <option value="Suite Limonaia">Suite Limonaia (Cam. 202)</option>
+                    </select>
+                </label>
+                <div class="form-row">
+                    <label>Arrivo<input type="date" id="checkin" required></label>
+                    <label>Partenza<input type="date" id="checkout" required></label>
+                </div>
+                <label>Ospiti
+                    <select id="guests">
+                        <option>1</option><option selected>2</option><option>3</option><option>4</option>
+                    </select>
+                </label>
+                <label>Email<input type="email" id="email" placeholder="nome@esempio.it" required></label>
+                <p class="form-msg" id="form-msg" role="alert"></p>
+                <button type="submit" class="btn btn-primary">Invia richiesta</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script src="recensioni.js"></script>
+</body>
+</html>

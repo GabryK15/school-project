@@ -2,49 +2,130 @@
 <html lang="it">
 <head>
     <meta charset="UTF-8">
-    <title>B&B</title>
-    <link rel="stylesheet" href="style.css"> 
-    <link href="https://googleapis.com" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Villa Antica B&B · Dal 1887</title>
+    <meta name="description" content="Villa Antica B&B: una dimora storica immersa nel verde, dove il tempo rallenta.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Special+Elite&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <div id="scroll-progress"></div>
 
-    <!-- BARRA DI NAVIGAZIONE FISSA -->
-    <div id="top-bar">
-        <h3>VILLA ANTICA B&B</h3>
-        <div class="nav-buttons">
-            <button class="button-top-bar">HOME</button>
-            <button class="button-top-bar">LE STANZE</button>
-            <button onclick="window.location.href='Giardino/giardino.html'" class="button-top-bar">IL GIARDINO</button>
-            <button class="button-top-bar">RECENSIONI</button>
-            <button class="button-top-bar">FAQ</button>
-            <button class="button-top-bar">CONTATTI</button>
+    <!-- BARRA DI NAVIGAZIONE -->
+    <header id="top-bar">
+        <h3 class="logo" data-target="home">Villa Antica <span>B&amp;B</span></h3>
+
+        <button class="burger" id="burger" aria-label="Apri il menu" aria-expanded="false">
+            <span></span><span></span><span></span>
+        </button>
+
+        <nav class="nav-buttons" id="nav-buttons">
+            <button class="button-top-bar" data-target="index.html">HOME</button>
+            <button class="button-top-bar" data-href="stanze.html">LE STANZE</button>
+            <button class="button-top-bar" data-href="Giardino/giardino.html">IL GIARDINO</button>
+            <button class="button-top-bar" data-href="recensioni.html">RECENSIONI</button>
+            <button class="button-top-bar" data-href="faq.html">FAQ</button>
+            <button class="button-top-bar" data-href="contatti.html">CONTATTI</button>
             <button id="prenota-top-bar" class="button-top-bar">PRENOTA ORA</button>
-        </div>
-    </div>
+        </nav>
+    </header>
 
-    <!-- IMMAGINE DI COPERTINA-->
-    <img src="Images/HomeImg.jpeg" alt="HomeImg.jpeg" id="home-image">
-
-    <!-- SEZIONE STORIA -->
-    <div class="story-section">
-        <div class="story-col-left">
-            <img src="Images/img1.jpeg" alt="">
-            <img src="Images/img2.jpeg" alt="">
-        </div>
-        <div class="story-col-right">
-            <h3 class="story-title">LA NOSTRA STORIA SECOLARE</h3>
-            <p class="story-text">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam fugiat quae est 
-                laboriosam aperiam eaque, voluptas quos! Rerum, aut iste at quae repudiandae 
-                numquam fugit distinctio quas et, tempore omnis?
-            </p>
-            <div id="scopri-div">
-                <a href="" style="font-weight: bolder; color: brown;">SCOPRI DI PIU'</a>
-                <p style="font-weight: bold; color: brown; margin-left: 10px;">></p>
+    <main>
+        <!-- HERO -->
+        <section id="home" class="hero">
+            <img src="Images/HomeImg.jpeg" alt="Facciata di Villa Antica B&B" id="home-image">
+            <div class="hero-vignette"></div>
+            <div class="hero-content">
+                <p class="eyebrow">Dimora storica · Dal 1887</p>
+                <h1>Dove il tempo<br><em>si prende il suo tempo</em></h1>
+                <div class="ornament"><span>❦</span></div>
+                <p class="hero-sub">Un rifugio d'altri tempi tra mura di pietra, giardini fioriti e colazioni come quelle di una volta.</p>
+                <div class="hero-actions">
+                    <button class="btn btn-primary" data-open-booking>Prenota il tuo soggiorno</button>
+                    <button class="btn btn-ghost" data-target="storia">Scopri la storia</button>
+                </div>
             </div>
-            
+        </section>
+
+        <!-- FASCIA INFO -->
+        <section class="strip reveal">
+            <div><strong>12</strong><span>Camere d'epoca</span></div>
+            <div><strong>1887</strong><span>Anno di fondazione</span></div>
+            <div><strong>3000 m²</strong><span>Di giardino</span></div>
+            <div><strong>4,9 / 5</strong><span>Dagli ospiti</span></div>
+        </section>
+
+        <!-- STORIA -->
+        <section id="storia" class="section story">
+            <div class="story-visual reveal from-left">
+                <div class="photo-frame">
+                    <div class="photo-placeholder" role="img" aria-label="Fotografia d'epoca della villa">
+                        <span>Villa Antica<br><small>Anno 1902</small></span>
+                    </div>
+                    <p class="caption">La famiglia sulla scalinata, estate del 1902</p>
+                </div>
+                <div class="stamp" aria-hidden="true">
+                    <span>EST.</span><strong>1887</strong><span>ITALIA</span>
+                </div>
+            </div>
+
+            <div class="story-text reveal from-right">
+                <p class="eyebrow">Chi siamo</p>
+                <h2>La nostra storia secolare</h2>
+                <div class="ornament left"><span>❦</span></div>
+                <p class="dropcap">Tra queste mura sono passati nobili viaggiatori, poeti in cerca di quiete e generazioni di una stessa famiglia. Ogni stanza conserva un frammento di memoria: un camino annerito dal tempo, un pavimento a cementine, una finestra che si apre sul profumo dei gelsomini.</p>
+                <p>Abbiamo restaurato la villa con pazienza, rispettando ciò che era e aggiungendo soltanto ciò che serve a farvi stare bene.</p>
+                <p class="signature">— la famiglia Moretti</p>
+            </div>
+        </section>
+
+        <!-- INVITO FINALE -->
+        <section class="invite reveal">
+            <div class="ornament light"><span>❦</span></div>
+            <p class="invite-quote">"Il lusso più raro è il tempo."</p>
+            <button class="btn btn-primary" data-open-booking>Richiedi disponibilità</button>
+        </section>
+    </main>
+
+    <footer>
+        <p class="footer-logo">Villa Antica B&amp;B</p>
+        <p>© <span id="year"></span> · Tutti i diritti riservati · Dal 1887</p>
+    </footer>
+
+    <!-- MODALE PRENOTAZIONE -->
+    <div class="modal" id="booking-modal" aria-hidden="true">
+        <div class="modal-box" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+            <button class="modal-close" id="modal-close" aria-label="Chiudi">×</button>
+            <p class="eyebrow">Prenotazione</p>
+            <h2 id="modal-title">Il vostro soggiorno</h2>
+            <div class="ornament"><span>❦</span></div>
+            <form id="booking-form" novalidate>
+                <label>Stanza Desiderata
+                    <select id="room-choice">
+                        <option value="Suite dei Poeti">Suite dei Poeti (Cam. 101)</option>
+                        <option value="Stanza del Conte">Stanza del Conte (Cam. 102)</option>
+                        <option value="Mansarda Gelso">Mansarda Gelso (Cam. 201)</option>
+                        <option value="Suite Limonaia">Suite Limonaia (Cam. 202)</option>
+                    </select>
+                </label>
+                <div class="form-row">
+                    <label>Arrivo<input type="date" id="checkin" required></label>
+                    <label>Partenza<input type="date" id="checkout" required></label>
+                </div>
+                <label>Ospiti
+                    <select id="guests">
+                        <option>1</option><option selected>2</option><option>3</option><option>4</option>
+                    </select>
+                </label>
+                <label>Email<input type="email" id="email" placeholder="nome@esempio.it" required></label>
+                <p class="form-msg" id="form-msg" role="alert"></p>
+                <button type="submit" class="btn btn-primary">Invia richiesta</button>
+            </form>
         </div>
     </div>
 
+    <script src="script.js"></script>
 </body>
 </html>
